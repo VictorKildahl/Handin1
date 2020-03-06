@@ -1,0 +1,28 @@
+﻿<Window x:Class="TheDebtBook.Views.PersonView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TheDebtBook.Views"
+        mc:Ignorable="d"
+        Title="History" Height="450" Width="350" 
+        FontSize="14">
+    <Grid>
+        <Label Margin="20,8,0,0" Grid.Column="1" FontWeight="Bold" >History</Label>
+
+        <ListBox IsSynchronizedWithCurrentItem="True"
+                 ItemTemplate="{StaticResource personTemplate}"
+                 Name="lbxPersons" 
+                 Grid.Column="3" 
+                 Margin="14,35,14,60"/>
+
+        <Button Content="Close" 
+                Grid.Column="1" 
+                Margin="14,375,14,14" 
+                HorizontalAlignment="Right" 
+                Padding="5,0,5,0"
+                IsCancel="True" 
+                Command="{Binding CloseAppCommand}"/>
+
+    </Grid>
+</Window>

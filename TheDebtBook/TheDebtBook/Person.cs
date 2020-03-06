@@ -10,14 +10,14 @@ namespace TheDebtBook.ViewModels
     public class Person : BindableBase
     {
         private string name;
-        private string debt;
+        private int debt;
 
         public Person()
         {
 
         }
 
-        public Person(string aName, string aDebt)
+        public Person(string aName, int aDebt)
         {
             name = aName;
             debt = aDebt;
@@ -39,7 +39,7 @@ namespace TheDebtBook.ViewModels
             }
         }
 
-        public string Debt
+        public int Debt
         {
             get
             {

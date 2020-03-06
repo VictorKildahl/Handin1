@@ -17,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Threading;
 using System.Xml.Serialization;
 using TheDebtBook.ViewModels;
+using TheDebtBook.Views;
 
 
 namespace TheDebtBook.ViewModels
@@ -31,7 +32,7 @@ namespace TheDebtBook.ViewModels
             persons = new ObservableCollection<Person>
             {
             #if DEBUG
-                new Person("Victor", "10")
+                new Person("Victor Kildahl", 10)
             #endif  
             };
             CurrentPerson = null;
@@ -245,6 +246,24 @@ namespace TheDebtBook.ViewModels
             }
         }
 
+        ICommand _history;
+        public ICommand HistoryCommand
+        {
+            get
+            {
+                return _history ?? (_history = new DelegateCommand(() =>
+                {
+                    var vm = new PersonViewModel();
+                    var dlg = new PersonView
+                    {
+                        DataContext = vm
+                    };
+                    if (dlg.ShowDialog() == true)
+                    {
+                    }
+                }));
+            }
+        }
     }
 }
 
