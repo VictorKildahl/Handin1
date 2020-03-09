@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ namespace TheDebtBook.ViewModels
     {
         private string name;
         private int debt;
+        private List<int> transaction;
 
         public Person()
         {
@@ -21,6 +23,8 @@ namespace TheDebtBook.ViewModels
         {
             name = aName;
             debt = aDebt;
+            transaction = new List<int>();
+            transaction.Add(aDebt);
         }
         public Person Clone()
         {
@@ -48,6 +52,18 @@ namespace TheDebtBook.ViewModels
             set
             {
                 SetProperty(ref debt, value);
+            }
+        }
+
+        public List<int> Transaction
+        {
+            get
+            {
+                return transaction;
+            }
+            set
+            {
+                SetProperty(ref transaction, value);
             }
         }
 

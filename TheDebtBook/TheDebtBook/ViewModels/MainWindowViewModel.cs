@@ -32,7 +32,10 @@ namespace TheDebtBook.ViewModels
             persons = new ObservableCollection<Person>
             {
             #if DEBUG
-                new Person("Victor Kildahl", 10)
+                new Person("Victor Kildahl", -10),
+                new Person("Lasse Mosel", -100),
+                new Person("Marc Warming", 200),
+                new Person("Brian Stjernholm", 250)
             #endif  
             };
             CurrentPerson = null;
@@ -256,7 +259,7 @@ namespace TheDebtBook.ViewModels
                     var vm = new PersonViewModel();
                     var dlg = new PersonView
                     {
-                        DataContext = vm
+                        DataContext = this
                     };
                     if (dlg.ShowDialog() == true)
                     {

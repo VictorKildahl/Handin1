@@ -10,19 +10,34 @@
     <Grid>
         <Label Margin="20,8,0,0" Grid.Column="1" FontWeight="Bold" >History</Label>
 
-        <ListBox IsSynchronizedWithCurrentItem="True"
-                 ItemTemplate="{StaticResource personTemplate}"
+        <ListBox ItemsSource="{Binding Path=CurrentPerson.Transaction}" 
+                 SelectedItem="{Binding Path=CurrentPerson}"
+                 SelectedIndex="{Binding Path=CurrentIndex}"
+                 IsSynchronizedWithCurrentItem="True"
                  Name="lbxPersons" 
                  Grid.Column="3" 
                  Margin="14,35,14,60"/>
+
+        <Label Margin="14,375,0,0" >Payment:</Label>
+
+        <TextBox Margin="85,375,175,14" 
+                 Name="tbxName" 
+                 Text="{Binding Path=AddToDebtCommand}" 
+                 Grid.Column="1"/>
+
+        <Button Content="Add payment" 
+                Grid.Column="1" 
+                Margin="14,375,70,14" 
+                HorizontalAlignment="Right" 
+                Padding="5,0,5,0"
+                Command="{Binding Path=AddToDebtCommand}"/>
 
         <Button Content="Close" 
                 Grid.Column="1" 
                 Margin="14,375,14,14" 
                 HorizontalAlignment="Right" 
                 Padding="5,0,5,0"
-                IsCancel="True" 
-                Command="{Binding CloseAppCommand}"/>
+                IsCancel="True" />
 
     </Grid>
 </Window>
