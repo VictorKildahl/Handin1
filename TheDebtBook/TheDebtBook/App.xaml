@@ -7,11 +7,9 @@
         <DataTemplate x:Key="personTemplate">
             <WrapPanel>
                 <TextBlock Text="{Binding Path=Name}" Padding="5, 0" 
-                           Foreground="{Binding Path=Name}"
                            Width="150" 
                 />
-                <TextBlock Text="{Binding Path=Debt}" Padding="5, 0"
-                           Foreground="{Binding Path=Debt}"
+                <TextBlock Text="{Binding Path=Sum}" Padding="5, 0"
                            Width="100"
                 />
             </WrapPanel>

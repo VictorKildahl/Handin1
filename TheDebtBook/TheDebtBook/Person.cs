@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data.Common;
 using System.Linq;
 using System.Text;
@@ -12,19 +13,20 @@ namespace TheDebtBook.ViewModels
     {
         private string name;
         private int debt;
-        private List<int> transaction;
+        private double sum;
+        private ObservableCollection<Debt> _debtentry = new ObservableCollection<Debt>();
 
         public Person()
         {
 
         }
 
-        public Person(string aName, int aDebt)
+        public Person(string aName, Debt intial)
         {
             name = aName;
-            debt = aDebt;
-            transaction = new List<int>();
-            transaction.Add(aDebt);
+            //debt = aDebt;
+            DebtEntry.Add(intial);
+            Debt = intial.Amount;
         }
         public Person Clone()
         {
@@ -55,18 +57,38 @@ namespace TheDebtBook.ViewModels
             }
         }
 
-        public List<int> Transaction
+        public ObservableCollection<Debt> DebtEntry
         {
             get
             {
-                return transaction;
+                return _debtentry;
             }
             set
             {
-                SetProperty(ref transaction, value);
+                SetProperty(ref _debtentry, value);
             }
         }
 
+        public double Sum
+        {
+            get
+            {
+                double sum = 0;
+
+                foreach (var debt in DebtEntry)
+                {
+                    sum += debt.Amount;
+                }
+
+                return sum;
+            }
+        }
+
+        public void Add()
+        {
+            DebtEntry.Add(new Debt(Debt));
+            RaisePropertyChanged("Sum");
+        }
     }
 }
 

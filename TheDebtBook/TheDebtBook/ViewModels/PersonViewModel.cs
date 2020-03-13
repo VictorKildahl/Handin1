@@ -8,25 +8,40 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Prism.Commands;
 using Prism.Mvvm;
+using TheDebtBook.ViewModels;
+using TheDebtBook.Views;
 
 namespace TheDebtBook.ViewModels
 {
     public class PersonViewModel : BindableBase
     {
+        private Person person;
 
-        //ICommand _AddToDebtCommand;
-        //public ICommand AddToDebtCommand
-        //{
-        //    get
-        //    {
-        //        return _AddToDebtCommand ?? (_AddToDebtCommand = new DelegateCommand(() =>
-        //        {
-        //            var newTransaction = new Person().Transaction;
-        //            int test;
+        public Person Person
+        {
+            get { return person; }
+            set
+            {
+                SetProperty(ref person, value);
+            }
+        }
 
-        //            newTransaction.Add(test);
-        //        }));
-        //    }
-        //}
+        public PersonViewModel(Person p)
+        {
+            person = p;
+
+        }
+
+        ICommand _AddToDebtCommand;
+        public ICommand AddToDebtCommand
+        {
+            get
+            {
+                return _AddToDebtCommand ?? (_AddToDebtCommand = new DelegateCommand(() =>
+                {
+                    Person.Add();
+                }));
+            }
+        }
     }
 }

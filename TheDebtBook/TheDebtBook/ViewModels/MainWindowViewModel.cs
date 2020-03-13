@@ -32,10 +32,10 @@ namespace TheDebtBook.ViewModels
             persons = new ObservableCollection<Person>
             {
             #if DEBUG
-                new Person("Victor Kildahl", -10),
-                new Person("Lasse Mosel", -100),
-                new Person("Marc Warming", 200),
-                new Person("Brian Stjernholm", 250)
+                new Person("Victor Kildahl", new Debt(-10)),
+                new Person("Lasse Mosel", new Debt(-100)),
+                new Person("Marc Warming", new Debt(-200)),
+                new Person("Brian Stjernholm", new Debt(250))
             #endif  
             };
             CurrentPerson = null;
@@ -256,10 +256,10 @@ namespace TheDebtBook.ViewModels
             {
                 return _history ?? (_history = new DelegateCommand(() =>
                 {
-                    var vm = new PersonViewModel();
+                    var vm = new PersonViewModel(CurrentPerson);
                     var dlg = new PersonView
                     {
-                        DataContext = this
+                        DataContext = vm
                     };
                     if (dlg.ShowDialog() == true)
                     {
