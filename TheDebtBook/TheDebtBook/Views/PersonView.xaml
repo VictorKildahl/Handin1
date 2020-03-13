@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TheDebtBook.Views"
         mc:Ignorable="d"
-        Title="History" Height="450" Width="350" 
-        FontSize="14">
+        Title="History" Height="450" Width="350"
+FontSize="14">
     <Grid>
         <Label Margin="20,8,0,0" Grid.Column="1" FontWeight="Bold" >History</Label>
 
